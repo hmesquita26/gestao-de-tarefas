@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarefa } from '../model/tarefa';
+import { TarefasService } from '../services/tarefas.service';
 
 @Component({
   selector: 'app-tarefas',
@@ -8,17 +9,15 @@ import { Tarefa } from '../model/tarefa';
 })
 export class TarefasComponent implements OnInit {
 
-  tarefas: Tarefa[] = [
-    { _id: 1, titulo: 'Teste', descricao: 'descricao teste', estado: 'NÃO INICIADO' },
-    { _id: 2, titulo: 'Teste', descricao: 'descricao teste', estado: 'NÃO INICIADO' },
-    { _id: 3, titulo: 'Teste', descricao: 'descricao teste', estado: 'NÃO INICIADO' },
-  ];
+  tarefas: Tarefa[] = [];
   displayedColumns = ['titulo', 'descricao', 'estado'];
 
-  constructor() {}
+  constructor(private tarefasService: TarefasService) {
+
+  }
 
   ngOnInit(): void {
-
+    this.tarefas = this.tarefasService.list();
   }
 
 }
