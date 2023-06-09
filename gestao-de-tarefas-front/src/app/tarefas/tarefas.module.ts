@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { TarefasRoutingModule } from './tarefas-routing.module';
 import { TarefasComponent } from './tarefas/tarefas.component';
+import {AppMaterialModule} from '../shared/app-material/app-material.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TarefasComponent } from './tarefas/tarefas.component';
   ],
   imports: [
     CommonModule,
-    TarefasRoutingModule
+    TarefasRoutingModule,
+    AppMaterialModule
   ]
 })
 export class TarefasModule { }
