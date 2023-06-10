@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarefa } from '../model/tarefa';
 import { TarefasService } from '../services/tarefas.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tarefas',
@@ -9,15 +10,15 @@ import { TarefasService } from '../services/tarefas.service';
 })
 export class TarefasComponent implements OnInit {
 
-  tarefas: Tarefa[] = [];
+  tarefas: Observable<Tarefa[]>;
   displayedColumns = ['titulo', 'descricao', 'estado'];
 
   constructor(private tarefasService: TarefasService) {
-
+    this.tarefas = this.tarefasService.list();
   }
 
   ngOnInit(): void {
-    this.tarefas = this.tarefasService.list();
+
   }
 
 }
