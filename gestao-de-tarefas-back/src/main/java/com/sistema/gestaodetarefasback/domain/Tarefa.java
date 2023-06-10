@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.sistema.gestaodetarefasback.domain.dto.TarefaDTO;
 import com.sistema.gestaodetarefasback.domain.enums.Estado;
 
 import lombok.Getter;
@@ -34,11 +35,19 @@ public class Tarefa implements Serializable{
 	@Enumerated
 	private Estado estado; 
 	
-	public Tarefa() {}
-
+	public Tarefa() {
+		this.estado = Estado.NAO_INICIADA;
+	}
+	
 	public Tarefa(String titulo, String descricao) {
 		this.titulo = titulo;
 		this.descricao = descricao;
+		this.estado = Estado.NAO_INICIADA;
+	}
+	
+	public Tarefa(TarefaDTO tarefaDTO) {
+		this.titulo = tarefaDTO.getTitulo();
+		this.descricao = tarefaDTO.getDescricao();
 		this.estado = Estado.NAO_INICIADA;
 	}
 	
