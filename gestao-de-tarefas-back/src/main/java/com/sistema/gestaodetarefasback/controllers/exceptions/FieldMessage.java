@@ -9,14 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class StandartError implements Serializable {
+public class FieldMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Long timestamp;
-	private Integer status;
-	private String error;
+	private String filedName;
 	private String message;
-	private String path;
-	
-	public StandartError() {}
 }
