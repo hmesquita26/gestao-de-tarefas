@@ -31,22 +31,22 @@ public class TarefaService {
 	}
 	
 	public List<Tarefa> findByTarefasNaoIniciadas() {
-		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasNaoIniciadas(); 
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByEstado(Estado.NAO_INICIADA); 
 		return tarefaOp.orElse(null);
 	}
 	
 	public List<Tarefa> findByTarefasEmProgresso() {
-		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasEmProgresso(); 
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByEstado(Estado.EM_PROGRESSO); 
 		return tarefaOp.orElse(null);
 	}
 	
 	public List<Tarefa> findByTarefasFinalizadas() {
-		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasFinalizadas(); 
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByEstado(Estado.FINALIZADA); 
 		return tarefaOp.orElse(null);
 	}
 	
 	public List<Tarefa> findByTarefasArquivadas() {
-		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasArquivadas(); 
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByEstado(Estado.ARQUIVADA); 
 		return tarefaOp.orElse(null);
 	}
 	
