@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.sistema.gestaodetarefasback.domain.Tarefa;
@@ -31,6 +30,26 @@ public class TarefaService {
 		return tarefaRepository.findAll();
 	}
 	
+	public List<Tarefa> findByTarefasNaoIniciadas() {
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasNaoIniciadas(); 
+		return tarefaOp.orElse(null);
+	}
+	
+	public List<Tarefa> findByTarefasEmProgresso() {
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasEmProgresso(); 
+		return tarefaOp.orElse(null);
+	}
+	
+	public List<Tarefa> findByTarefasFinalizadas() {
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasFinalizadas(); 
+		return tarefaOp.orElse(null);
+	}
+	
+	public List<Tarefa> findByTarefasArquivadas() {
+		Optional<List<Tarefa>> tarefaOp = tarefaRepository.findByTarefasArquivadas(); 
+		return tarefaOp.orElse(null);
+	}
+	
 	public Tarefa cadastrar(TarefaDTO tarefaDTO) {
 		tarefaDTO.setId(null);
 		Tarefa tarefa = new Tarefa(tarefaDTO);
@@ -42,7 +61,7 @@ public class TarefaService {
 		Tarefa tarefa = findById(id);
 		
 		if (tarefa.getEstado() == Estado.FINALIZADA || tarefa.getEstado() == Estado.ARQUIVADA)
-			throw new BusinessException("Não é possível alterar o estado da tarefa!");
+			throw new BusinessException("Não é possível alterar a tarefa!");
 		
 		if (tarefaDTO.getEstado().getCodigo() != tarefa.getEstado().getCodigo())
 			tarefaDTO = alterarEstado(tarefaDTO, tarefa);
