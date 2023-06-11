@@ -46,9 +46,10 @@ public class Tarefa implements Serializable{
 	}
 	
 	public Tarefa(TarefaDTO tarefaDTO) {
+		this.id = tarefaDTO.getId();
 		this.titulo = tarefaDTO.getTitulo();
 		this.descricao = tarefaDTO.getDescricao();
-		this.estado = Estado.NAO_INICIADA;
+		this.estado = tarefaDTO.getEstado();
 	}
 	
 	public boolean podeSerFinalizado() {
