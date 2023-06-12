@@ -86,9 +86,9 @@ public class TarefaController {
 	}
 	
 	@PatchMapping("/{id}/arquivar")
-	public ResponseEntity<TarefaDTO> arquivar(@PathVariable Integer id, @RequestBody TarefaDTO tarefaDTO) {
-		//TODO fazer a chamada do método para arquivar a tarefa
-		return null;
+	public ResponseEntity<TarefaDTO> arquivar(@PathVariable Integer id) {
+		Tarefa tarefa = service.arquivar(id);
+		return ResponseEntity.ok(new TarefaDTO(tarefa));
 	}
 	
 }
