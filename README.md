@@ -24,7 +24,7 @@ git clone https://github.com/hmesquita26/gestao-de-tarefas.git
 2. Acesse o diretório do projeto:
 
 para o back-end:
-cd gestao-projeto 
+cd gestao-de-tarefas-back 
 
 para o front-end:
 cd gestao-de-tarefas-front
