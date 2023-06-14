@@ -1,0 +1,8 @@
+<section>
+  <div class="button-row">
+  <button mat-raised-button color="primary" routerLink="/tarefas/cadastrar">Nova Tarefa</button>
+  </div>
+</section>
+<app-lista-tarefas [estado]="'NAO_INICIADA'" ></app-lista-tarefas>
+<app-lista-tarefas [estado]="'EM_PROGRESSO'"></app-lista-tarefas>
+<app-lista-tarefas [estado]="'FINALIZADA'"></app-lista-tarefas>

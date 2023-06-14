@@ -1,0 +1,32 @@
+<mat-toolbar> {{(this.tarefa && this.tarefa._id) ? 'Atualizar Tarefa' : 'Cadastrar Tarefa'}} </mat-toolbar>
+
+<mat-card>
+    <form class="container-form" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
+      <mat-form-field>
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="titulo" required autocomplete="off">
+        <mat-error>O campo é obrigatório</mat-error>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="descricao" autocomplete="off"></textarea>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field >
+        <mat-label>{{ (tarefa && tarefa.estado != 'NAO_INICIADA') ? 'Estado da tarefa' : 'NÃO INICIADA' }}</mat-label>
+        <!-- formControlName="estado" -->
+        <mat-select disabled="formGroup.valid">
+          <mat-option value="NAO_INICIADA">NÃO INICIADA</mat-option>
+          <mat-option value="EM_PROGRESSO">EM PROGRESSO</mat-option>
+          <mat-option value="FINALIZADA">FINALIZADA</mat-option>
+          <mat-option value="ARQUIVADA">ARQUIVADA</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <div class="button-row">
+        <button mat-raised-button color="primary" [disabled]="!formGroup.valid" >Salvar</button>
+        <button mat-raised-button type="button" routerLink="">Cancelar</button>
+      </div>
+    </form>
+</mat-card>

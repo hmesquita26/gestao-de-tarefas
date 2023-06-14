@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+.editar {
+  color: whitesmoke;
+}
+
+.arquivar {
+  color: blueviolet;
+}
+
+.arquivar a:hover {
+  color: whitesmoke;
+}
