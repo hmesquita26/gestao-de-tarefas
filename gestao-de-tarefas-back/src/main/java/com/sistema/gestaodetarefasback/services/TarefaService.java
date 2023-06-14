@@ -52,6 +52,9 @@ public class TarefaService {
 	
 	public Tarefa cadastrar(TarefaDTO tarefaDTO) {
 		tarefaDTO.setId(null);
+		tarefaDTO.setEstado(Estado.NAO_INICIADA);
+		if (tarefaDTO.getDescricao() == null)
+			tarefaDTO.setDescricao("");
 		Tarefa tarefa = new Tarefa(tarefaDTO);
 		return tarefaRepository.save(tarefa);
 	}
