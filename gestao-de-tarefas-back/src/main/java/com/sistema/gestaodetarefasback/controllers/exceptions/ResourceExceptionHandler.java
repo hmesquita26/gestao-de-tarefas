@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.sistema.gestaodetarefasback.services.exceptions.BusinessException;
 import com.sistema.gestaodetarefasback.services.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
@@ -21,6 +22,16 @@ public class ResourceExceptionHandler {
 				"Object Not Found", ex.getMessage(), request.getRequestURI());
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+	}
+	
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<StandartError> businessException(BusinessException ex,
+			HttpServletRequest request) {
+		
+		StandartError error = new StandartError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+				"Business Exception Error", ex.getMessage(), request.getRequestURI());
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
